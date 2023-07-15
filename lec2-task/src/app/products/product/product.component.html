@@ -1,0 +1,11 @@
+<div class="productItem">
+    <div>
+        <img [src]="productItem.imageProduct">
+    </div>
+    <div>
+        <h2>{{productItem.nameProduct}}</h2>
+        <span>{{productItem.priceProduct}}$</span>
+        <h3 *ngIf="productItem.isAvailable">Avaliable</h3>
+        <h3 *ngIf="!productItem.isAvailable" [ngStyle]="{color:productItem.isAvailable? 'Green': 'Red'}">Not Avaliable</h3>
+    </div>
+</div>
