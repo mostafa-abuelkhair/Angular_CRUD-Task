@@ -13,7 +13,7 @@ export class ProductsComponent {
     new Product("Black Nike", "../../../assets/product-4.jpg", 300, false),
     new Product("Drone", "../../../assets/product-5.jpg", 3000, false),
     new Product("Huawei Watch", "../../../assets/product-6.jpg", 950, false),
-    new Product("Black Blouse", "../../../assets/product-7.jpg", 160, true),
+    new Product("Black Blouse", "../../../assets/product-7.jpg", 80, true),
     new Product("Some Creams", "../../../assets/product-8.jpg", 60, false)
   ];
   featured: number;
@@ -33,15 +33,16 @@ export class ProductsComponent {
     this.products.forEach((product)=>{
       if(product.isFeatured) this.featured++;
       if(product.isAvailable) this.avaliableCount++;
-      
+
     });
   }
 
   onFilterChanged(selectedFilter:string){
+    console.log('item',selectedFilter)
    this.filter = selectedFilter;
   }
   shouldBeViewed(product:Product):boolean{
-    
+
     if(this.filter =="All")return true;
     if(this.filter =="Avaliable" && product.isAvailable) return true;
     if(this.filter =="Featured" && product.isFeatured) return true;
