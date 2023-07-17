@@ -11,6 +11,7 @@ import {Product} from "../models/productModel";
     )
 export class ProductItemComponent {
     @Input() productItem: Product;
+    @Input() filter: String = 'All';
     @Input() products!: Product[];
     constructor(){
         this.productItem = new Product();
@@ -20,6 +21,13 @@ export class ProductItemComponent {
       return product.priceProduct>100
     }
 
+    shouldBeViewed(product:Product):boolean{
+
+        if(this.filter =="All")return true;
+        if(this.filter =="Avaliable" && product.isAvailable) return true;
+        if(this.filter =="Featured" && product.isFeatured) return true;
+        return false;
+      }
 
 }
 

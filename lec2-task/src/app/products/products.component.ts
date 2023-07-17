@@ -41,11 +41,5 @@ export class ProductsComponent {
     console.log('item',selectedFilter)
    this.filter = selectedFilter;
   }
-  shouldBeViewed(product:Product):boolean{
 
-    if(this.filter =="All")return true;
-    if(this.filter =="Avaliable" && product.isAvailable) return true;
-    if(this.filter =="Featured" && product.isFeatured) return true;
-    return false;
-  }
 }
