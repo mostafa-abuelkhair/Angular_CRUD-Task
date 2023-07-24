@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Product } from '../products/models/productModel'
 
 
@@ -8,7 +9,9 @@ import { Product } from '../products/models/productModel'
 })
 export class FetchApiService {
 
-  private products: Product[] = [
+  url='http://localhost:8080/products';
+
+ /* private products: Product[] = [
     new Product("Nikon Camera", "assets/product-1.jpg", 2000, true),
     new Product("Blue T-Shirt", "assets/product-2.jpg", 250, true),
     new Product("White Lamp", "assets/product-3.jpg", 500, true),
@@ -17,13 +20,15 @@ export class FetchApiService {
     new Product("Huawei Watch", "assets/product-6.jpg", 950, false),
     new Product("Black Blouse", "assets/product-7.jpg", 80, true),
     new Product("Some Creams", "assets/product-8.jpg", 60, false)
-  ]; 
+  ]; */
 
-  constructor() { }
+  constructor(private http: HttpClient ) { }
 
   getProducts(){
 
-   return this.products
+   return this.http.get<Product[]>(this.url);
+
+   //return this.products
 
   }
   

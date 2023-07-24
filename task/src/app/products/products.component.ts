@@ -9,21 +9,24 @@ import { FetchApiService } from '../services/fetch-api.service';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent {
-  private products: Product[];
+  private products: Product[]=[];
   featured: number;
   avaliableCount: number;
-  all: number;
+  all: number=0;
   filter = "All"
 
 
   constructor( public fetchApi:FetchApiService ){
 
-    this.products =fetchApi.getProducts();
-
+    fetchApi.getProducts().subscribe( (response:Product[]) => { 
+      this.products=response;
+      this.setCounts();
+      this.all = this.products.length; 
+    });
+    
+    
     this.featured = 0;
     this.avaliableCount = 0;
-    this.setCounts();
-    this.all = this.products.length; 
 
   }
 
